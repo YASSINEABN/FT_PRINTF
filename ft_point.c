@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaboulan <yaboulan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 22:38:25 by azainabi          #+#    #+#             */
-/*   Updated: 2023/11/18 23:40:01 by yaboulan         ###   ########.fr       */
+/*   Created: 2023/11/21 10:42:49 by yaboulan          #+#    #+#             */
+/*   Updated: 2023/11/21 10:42:58 by yaboulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "ft_printf.h"
 
@@ -31,6 +33,11 @@ static void	ft_addrhexa(unsigned long nbr, char check, int *size)
 
 void	ft_point(unsigned long nbr, int *count)
 {
-	ft_putstr("0x", count);
-	ft_addrhexa(nbr, 'x', count);
+	if (!nbr)
+		ft_putstr("(nil)", count);
+	else
+	{
+		ft_putstr("0x", count);
+		ft_addrhexa(nbr, 'x', count);
+	}
 }
