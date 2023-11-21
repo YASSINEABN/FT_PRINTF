@@ -6,7 +6,7 @@
 /*   By: yaboulan <yaboulan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 13:46:03 by yaboulan          #+#    #+#             */
-/*   Updated: 2023/11/18 23:45:01 by yaboulan         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:38:43 by yaboulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 static void	check_flags(char c, va_list args, int *count)
 {
 	unsigned long	p;
+	char			*s;
 
 	if (c == 's')
-		ft_putstr(va_arg(args, char *), count);
+	{
+		s = va_arg(args, char *);
+		ft_putstr(s, count);
+	}
 	else if (c == 'c')
 		ft_putchar((char)va_arg(args, int), count);
 	else if (c == 'd' || c == 'i')
@@ -29,10 +33,7 @@ static void	check_flags(char c, va_list args, int *count)
 	else if (c == 'p')
 	{
 		p = va_arg(args, unsigned long);
-		if (!p)
-			ft_putstr("(nil)", count);
-		else
-			ft_point(p, count);
+		ft_point(p, count);
 	}
 	else if (c == '%')
 		ft_putchar('%', count);
@@ -68,30 +69,3 @@ int	ft_printf(const char *count, ...)
 	va_end(args);
 	return (length);
 }
-// int	main(void)
-// {
-// 	// char	*str;
-// 	// int		d;
-// 	// int		a;
-// 	// int		b;
-// 	// char	*p;
-
-// 	// str = "yassine";
-// 	// d = -2147483648;
-// 	// p = 0;
-// 	// int x = ft_printf("%");
-// 	// char *a = NULL;
-
-// 	// a = printf(" a :   hello %s %c %d %p %u % \n", str, 'h', d, p, -5);
-// 	// b = ft_printf(" b :   hello %s %c %d %p %u  \n", str, 'h', d, p, -5);
-// 	// printf("%/ \n");
-// 	// printf("%i");
-// 	// printf("a :%d ||   b:%d     ",a,b);
-
-// 	// printf("%");
-// 	int a = ft_printf("%%%");
-// 	printf("%d",a);
-// 	//   ft_printf("%d",ft_printf("%"));
-
-// 	return (0);
-// }
